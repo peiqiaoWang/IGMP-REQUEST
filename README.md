@@ -32,7 +32,7 @@ sudo tcpdump -i eth0 host 239.1.1.1
 
 然后看看有没有流量输出，没有话下一步
 
-3、执行脚本```igmpv2-test.py```，sudo python igmpv2-test.py ，然后再看看 步骤2 的终端，看看有没有流量输出；如果没有输出的话，在执行脚本```igmpv3-test.py```，然后再看看 步骤2 的终端，看看有没有流量输出。
+3、执行脚本```igmpv2-test.py```，sudo python igmpv2-test.py --interface eth1，然后再看看 步骤2 的终端，看看有没有流量输出；如果没有输出的话，在执行脚本```igmpv3-test.py```，然后再看看 步骤2 的终端，看看有没有流量输出。
 
 
 

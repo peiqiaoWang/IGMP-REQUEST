@@ -1,7 +1,14 @@
+#-*- coding: UTF-8 -*-
 from scapy.all import *
 from scapy.contrib.igmpv3 import IGMPv3,IGMPv3mq,IGMP,IGMPv3gr
 from scapy.contrib.igmpv3 import IGMPv3mr
+import argparse
 
+
+parser = argparse.ArgumentParser(description='选择网口进行引流')
+parser.add_argument('--interface', help='输入对应的网口')
+args = parser.parse_args()
+interface = args.interface
 
 def readIpSetFromFile(fileLocation):
     ipSet = []
@@ -19,8 +26,8 @@ while True:
                                                                               tos=0xc0) / IGMPv3() / IGMPv3mr(
             numgrp=1) / IGMPv3gr(rtype=4, maddr=ip)
         print ip
-        sendp(p_join, iface='eth0')
-        sendp(p_join, iface='eth0')
+        sendp(p_join, iface=interface)
+        sendp(p_join, iface=interface)
         print '----------------'
     time.sleep(5)
 

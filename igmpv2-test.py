@@ -1,7 +1,16 @@
+#-*- coding: UTF-8 -*-
+
 from scapy.all import *
 from scapy.contrib.igmp import IGMP
 import time
 import IPy
+import argparse
+
+
+parser = argparse.ArgumentParser(description='选择网口进行引流')
+parser.add_argument('--interface', help='输入对应的网口')
+args = parser.parse_args()
+interface = args.interface
 
 def readIpSetFromFile(fileLocation):
       ipSet = []
@@ -29,7 +38,7 @@ while True:
         print ip
         print mulMac
         p_join = Ether(dst=mulMac, src='a0:8c:fd:9e:2d:f1') / IP(src='10.0.0.123', dst=ip, ttl=1) /IGMP(type=0x16,gaddr=ip,mrcode=0x00)
-        sendp(p_join,iface='eth0')
+        sendp(p_join,iface=interface)
         print '----------------'
     time.sleep(5)
 
